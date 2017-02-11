@@ -1,101 +1,100 @@
 package com.github.woodylic.daout.entity;
 
-import java.math.BigInteger;
 import java.util.Date;
 
 public class SmsTask {
 
-	private BigInteger id;
+    private Long id;
 
-	private BigInteger userId;
+    private Long userId;
 
-	private String phoneNumber;
+    private String phoneNumber;
 
-	private String msgContent;
+    private String msgContent;
 
-	private Integer status;
+    private Integer status;
 
-	private Date createDate;
+    private Date createDate;
 
-	private Date planSentTime;
+    private Date planSentTime;
 
-	private Date actualSentTime;
+    private Date actualSentTime;
 
-	public BigInteger getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(BigInteger id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public BigInteger getUserId() {
-		return userId;
-	}
+    public Long getUserId() {
+        return userId;
+    }
 
-	public void setUserId(BigInteger userId) {
-		this.userId = userId;
-	}
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
-	public String getMsgContent() {
-		return msgContent;
-	}
+    public String getMsgContent() {
+        return msgContent;
+    }
 
-	public void setMsgContent(String msgContent) {
-		this.msgContent = msgContent;
-	}
+    public void setMsgContent(String msgContent) {
+        this.msgContent = msgContent;
+    }
 
-	public Integer getStatus() {
-		return status;
-	}
+    public Integer getStatus() {
+        return status;
+    }
 
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 
-	public Date getCreateDate() {
-		return createDate;
-	}
+    public Date getCreateDate() {
+        return createDate;
+    }
 
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
 
-	public Date getPlanSentTime() {
-		return planSentTime;
-	}
+    public Date getPlanSentTime() {
+        return planSentTime;
+    }
 
-	public void setPlanSentTime(Date planSentTime) {
-		this.planSentTime = planSentTime;
-	}
+    public void setPlanSentTime(Date planSentTime) {
+        this.planSentTime = planSentTime;
+    }
 
-	public Date getActualSentTime() {
-		return actualSentTime;
-	}
+    public Date getActualSentTime() {
+        return actualSentTime;
+    }
 
-	public void setActualSentTime(Date actualSentTime) {
-		this.actualSentTime = actualSentTime;
-	}
+    public void setActualSentTime(Date actualSentTime) {
+        this.actualSentTime = actualSentTime;
+    }
 
-	@Override
-	public String toString() {
-		return "SmsTask{" +
-				"id=" + id +
-				", userId=" + userId +
-				", phoneNumber='" + phoneNumber + '\'' +
-				", msgContent='" + msgContent + '\'' +
-				", status=" + status +
-				", createDate=" + createDate +
-				", planSentTime=" + planSentTime +
-				", actualSentTime=" + actualSentTime +
-				'}';
-	}
+    @Override
+    public String toString() {
+        return "SmsTask{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", msgContent='" + msgContent + '\'' +
+                ", status=" + status +
+                ", createDate=" + createDate +
+                ", planSentTime=" + planSentTime +
+                ", actualSentTime=" + actualSentTime +
+                '}';
+    }
 }

@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-			 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-			 xmlns:context="http://www.springframework.org/schema/context"
-			 xsi:schemaLocation="
-						http://www.springframework.org/schema/beans
-						http://www.springframework.org/schema/beans/spring-beans.xsd
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
             http://www.springframework.org/schema/context
-						http://www.springframework.org/schema/context/spring-context.xsd">
+            http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<!-- 启动annotation配置方式 -->
-	<context:annotation-config/>
-	<!-- 启动自动扫描 -->
-	<context:component-scan base-package="com.github.woodylic.daout"/>
+    <!-- 启动annotation配置方式 -->
+    <context:annotation-config/>
+    <!-- 启动自动扫描 -->
+    <context:component-scan base-package="com.github.woodylic.daout"/>
 
-	<!-- 读取property文件变量 -->
-	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="locations">
-			<array>
-				<value>classpath:conf/db.properties</value>
-			</array>
-		</property>
-	</bean>
+    <!-- 读取property文件变量 -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <array>
+                <value>classpath:conf/db.properties</value>
+            </array>
+        </property>
+    </bean>
 
-	<!-- 定义DataSource -->
-	<bean id="dataSource" class="${dataSource}">
-		<property name="driverClassName" value="${driverClassName}"/>
-		<property name="url" value="${url}"/>
-		<property name="username" value="${username}"/>
-		<property name="password" value="${password}"/>
-	</bean>
+    <!-- 定义DataSource -->
+    <bean id="dataSource" class="${dataSource}">
+        <property name="driverClassName" value="${driverClassName}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+    </bean>
 
-	<!-- 定义SessionFactory -->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"/>
-		<!--<property name="configLocation" value="classpath:conf/mybatis-config.xml"/>-->
-		<property name="mapperLocations" value="classpath:sqlmap/*Mapper.xml"/>
-	</bean>
+    <!-- 定义SessionFactory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!--<property name="configLocation" value="classpath:conf/mybatis-config.xml"/>-->
+        <property name="mapperLocations" value="classpath:sqlmap/*Mapper.xml"/>
+    </bean>
 
-	<!-- 定义自动扫描dao -->
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.github.woodylic.daout.dao"/>
-		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-	</bean>
+    <!-- 定义自动扫描dao -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.github.woodylic.daout.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
 
-	<!--
-	<entity id="smsTaskService" class="com.github.woodylic.daoutimpl.SmsTaskServiceImpl" />
-	-->
+    <!--
+    <entity id="smsTaskService" class="com.github.woodylic.daoutimpl.SmsTaskServiceImpl" />
+    -->
 </beans>

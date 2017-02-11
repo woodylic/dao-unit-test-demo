@@ -1,27 +1,29 @@
 package com.github.woodylic.daout.service.impl;
 
 import com.github.woodylic.daout.entity.SmsTask;
-import com.github.woodylic.daout.dao.SmsTaskMapper;
+import com.github.woodylic.daout.dao.SmsTaskDao;
 import com.github.woodylic.daout.service.SmsTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigInteger;
+import java.security.InvalidParameterException;
 
-/**
- * Created by choli on 2017/1/18.
- */
 @Service("smsTaskService")
 public class SmsTaskServiceImpl implements SmsTaskService{
 
 	@Autowired
-	private SmsTaskMapper smsTaskMapper;
+	private SmsTaskDao smsTaskDao;
 
-	public int insert(SmsTask smsTask) {
-		return smsTaskMapper.insert(smsTask);
+	public void insert(SmsTask smsTask) {
+
+		if(smsTask == null)
+		    throw new InvalidParameterException("smsTask should not be null");
+
+		smsTaskDao.insert(smsTask);
 	}
 
-	public SmsTask selectByPrimaryKey(BigInteger id) {
-		return smsTaskMapper.selectByPrimaryKey(id);
+	public SmsTask selectByPrimaryKey(Long id) {
+
+	    return smsTaskDao.selectByPrimaryKey(id);
 	}
 }
