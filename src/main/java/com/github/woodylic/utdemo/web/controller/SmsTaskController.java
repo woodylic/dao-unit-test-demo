@@ -26,7 +26,8 @@ public class SmsTaskController {
     @ResponseBody
     public void addSmsTask(@RequestBody BaseRequest<SmsTask> response) {
 
-        System.out.print(response.getRequestData().toString());
-        //smsTaskService.insert(smsTask);
+        SmsTask smsTask = response.getRequestData();
+        System.out.print(smsTask.toString());
+        smsTaskService.insert(smsTask);
     }
 }
