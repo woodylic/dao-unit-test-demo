@@ -13,7 +13,7 @@
 	<jdbc:embedded-database id="dataSource" type="H2">
 		<jdbc:script location="classpath:sql-script/set-h2-type.sql"/>
 		<jdbc:script location="classpath:sql-script/scheme.sql"/>
-		<jdbc:script location="classpath:sql-script/test-data.sql"/>
+		<jdbc:script location="classpath:sql-script/test-requestData.sql"/>
 	</jdbc:embedded-database>
 
 </beans>

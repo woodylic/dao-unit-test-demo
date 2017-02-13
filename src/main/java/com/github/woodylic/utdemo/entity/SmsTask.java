@@ -1,7 +1,10 @@
 package com.github.woodylic.utdemo.entity;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import java.util.Date;
 
+@JsonDeserialize
 public class SmsTask {
 
     private Long id;
