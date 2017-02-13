@@ -5,6 +5,8 @@
             http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+  <!-- 配置数据访问层 -->
+
   <!-- 1. 读取property文件变量 -->
   <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
     <property name="locations">

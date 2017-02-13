@@ -1,6 +1,7 @@
 package com.github.woodylic.utdemo.service;
 
 import com.github.woodylic.utdemo.entity.SmsTask;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +17,14 @@ public class SmsTaskServiceIntegrationTest {
     @Autowired
     private SmsTaskService smsTaskService;
 
+    @Ignore
     @Test
     public void testSelectByPrimaryKey() {
         SmsTask smsTask = smsTaskService.selectByPrimaryKey(1001L);
         System.out.println(smsTask.toString());
     }
 
+    @Ignore
     @Test
     @Rollback
     @Transactional
