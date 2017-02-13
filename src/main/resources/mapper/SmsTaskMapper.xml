@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.github.woodylic.daout.dao.SmsTaskDao">
-	<resultMap id="BaseResultMap" type="com.github.woodylic.daout.entity.SmsTask">
+<mapper namespace="com.github.woodylic.utdemo.dao.SmsTaskDao">
+	<resultMap id="BaseResultMap" type="com.github.woodylic.utdemo.entity.SmsTask">
 		<id column="id" property="id" jdbcType="BIGINT"/>
 
 		<result column="user_id" property="userId" jdbcType="BIGINT"/>
@@ -17,7 +17,7 @@
 		id, user_id, phone_number, msg_content, status, create_date, plan_sent_time, actual_sent_time
 	</sql>
 
-	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.github.woodylic.daout.entity.SmsTask">
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.github.woodylic.utdemo.entity.SmsTask">
 		INSERT INTO tbl_sms_task
 		(user_id, phone_number, msg_content, status, create_date, plan_sent_time, actual_sent_time)
 		VALUES

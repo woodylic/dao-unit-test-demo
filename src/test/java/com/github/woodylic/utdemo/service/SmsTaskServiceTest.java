@@ -1,21 +1,24 @@
-package com.github.woodylic.daout.service;
+package com.github.woodylic.utdemo.service;
 
-import com.github.woodylic.daout.dao.SmsTaskDao;
-import com.github.woodylic.daout.entity.SmsTask;
-import com.github.woodylic.daout.service.impl.SmsTaskServiceImpl;
+import com.github.woodylic.utdemo.dao.SmsTaskDao;
+import com.github.woodylic.utdemo.entity.SmsTask;
+import com.github.woodylic.utdemo.service.impl.SmsTaskServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.stubbing.Answer;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.security.InvalidParameterException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 //@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration({"classpath:spring-service.xml","classpath:spring-dao.xml"})
 public class SmsTaskServiceTest {
 
     @Mock
@@ -46,10 +49,21 @@ public class SmsTaskServiceTest {
     }
 
     @Test
-    public void testInsert(){
+    public void testInsert() throws Exception {
         SmsTask smsTaskToBeInserted = new SmsTask();
         smsTaskToBeInserted.setId(1L);
         smsTaskToBeInserted.setMsgContent("Test Message");
+
+		when(smsTaskDao.insert(any(SmsTask.class))).then(invocation -> {
+			Object[] args = invocation.getArguments();
+			SmsTask smsTask = (SmsTask) args[0];
+
+			assertNotNull(smsTask);
+			assertEquals(Long.valueOf(1L), smsTask.getId());
+			assertEquals("Test Message", smsTask.getMsgContent());
+
+			return null;
+		});
 
         smsTaskServiceImpl.insert(smsTaskToBeInserted);
 

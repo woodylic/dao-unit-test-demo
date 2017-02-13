@@ -1,6 +1,6 @@
-package com.github.woodylic.daout.service;
+package com.github.woodylic.utdemo.service;
 
-import com.github.woodylic.daout.entity.SmsTask;
+import com.github.woodylic.utdemo.entity.SmsTask;
 
 public interface SmsTaskService {
 

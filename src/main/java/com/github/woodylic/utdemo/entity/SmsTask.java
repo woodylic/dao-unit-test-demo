@@ -1,4 +1,4 @@
-package com.github.woodylic.daout.entity;
+package com.github.woodylic.utdemo.entity;
 
 import java.util.Date;
 
