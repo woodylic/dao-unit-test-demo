@@ -3,6 +3,7 @@ package com.github.woodylic.todolist.integration;
 import com.github.woodylic.todolist.service.TodoService;
 import com.github.woodylic.todolist.web.controller.TodoController;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -36,6 +37,7 @@ public class TodoControllerIntegrationTest {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
     }
 
+    @Ignore
     @Test
     public void testFindAll() throws Exception {
         mockMvc.perform(get("/todo/list"))
