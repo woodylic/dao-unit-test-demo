@@ -43,6 +43,7 @@ public class TodoControllerTest {
     @Before
     public void setUp() throws Exception {
         mockMvc = MockMvcBuilders.standaloneSetup(todoController).build();
+        reset(todoServiceMock); //注意reset，本例中todoServiceMock由Spring初始化一次，需要每个case前reset，避免交叉影响。
     }
 
     @Test
