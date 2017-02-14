@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.github.woodylic.todolist.dao.TodoDao">
+
+  <resultMap id="BaseResultMap" type="TodoItem">
+    <id column="id" property="id" jdbcType="BIGINT"/>
+
+    <result column="title" property="title" jdbcType="VARCHAR"/>
+    <result column="description" property="description" jdbcType="VARCHAR"/>
+    <result column="status" property="status" jdbcType="TINYINT"/>
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, title, description, status
+  </sql>
+
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="TodoItem">
+    INSERT INTO tbl_todos
+      (title,description,status)
+    VALUES
+      (#{title, jdbcType=VARCHAR}, #{description, jdbcType=VARCHAR},#{status, jdbcType=TINYINT})
+  </insert>
+
+  <update id="update" parameterType="TodoItem">
+    UPDATE tbl_todos
+    SET
+      title = #{title, jdbcType=VARCHAR},
+      description = #{description, jdbcType=VARCHAR},
+      status = #{status, jdbcType=TINYINT}
+    WHERE id = #{id, jdbcType=BIGINT}
+  </update>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM tbl_todos
+    WHERE id = #{id, jdbcType=BIGINT}
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM tbl_todos
+  </select>
+
+</mapper>

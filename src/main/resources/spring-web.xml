@@ -37,6 +37,6 @@
   -->
 
   <!-- 4. 扫描Web相关包 -->
-  <context:component-scan base-package="com.github.woodylic.utdemo.web" />
+  <context:component-scan base-package="com.github.woodylic.todolist.web" />
 
 </beans>

@@ -29,9 +29,7 @@
     <!-- 注入数据库连接池 -->
     <property name="dataSource" ref="dataSource"/>
     <!-- 配置MyBatis全局配置文件 -->
-    <!--<property name="configLocation" value="classpath:mybatis-config.xml" />-->
-    <!-- 扫描entity包，使用别名: com.github.woodylic.utdemo.SmsTask -> SmsTask -->
-    <!--<property name="typeAliasesPackage" value="com.github.woodylic.utdemo.entity" />-->
+    <property name="configLocation" value="classpath:mybatis-config.xml" />
     <!-- 扫描mapper需要的xml文件 -->
     <property name="mapperLocations" value="classpath:mapper/*Mapper.xml" />
   </bean>
@@ -41,7 +39,7 @@
     <!-- 注入sqlSessionFactory -->
     <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     <!-- 配置需要扫描的Dao接口包 -->
-    <property name="basePackage" value="com.github.woodylic.utdemo.dao"/>
+    <property name="basePackage" value="com.github.woodylic.todolist.dao"/>
   </bean>
 
 </beans>
