@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:mockito="http://www.mockito.org/spring/mockito"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="
-						http://www.springframework.org/schema/beans
-						http://www.springframework.org/schema/beans/spring-beans.xsd
-						http://www.mockito.org/spring/mockito
-						http://www.mockito.org/spring/mockito.xsd">
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/mvc
+            http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-  <import resource="classpath:spring-web.xml" />
-
-  <!-- 创建一个受Spring管理的todoServiceMock，其它Bean很自然的可以获得注入 -->
-  <!-- 已经用annotation方式替换掉 -->
-  <!--<mockito:mock id="todoServiceMock" class="com.github.woodylic.todolist.service.TodoService" />-->
+  <!--
+    此文件专门用于controller unit test，不希望Spring加载所有Controller（否则每个controllerTest都需要mock所有service类），
+    故只是简单启用MVC，移除自动包扫描。
+    测试发现不需要启动mvc也可以单测controller，先注释掉。
+  -->
+  <!--<mvc:annotation-driven />-->
 
 </beans>

@@ -28,7 +28,7 @@ public class TodoServiceIntegrationTest {
     @Autowired
     private TodoService todoService;
 
-    @Ignore
+    @Ignore //集成测试应该移至自动化测试项目
     @Test
     public void testSelectByPrimaryKey() throws TodoException {
 
@@ -38,7 +38,7 @@ public class TodoServiceIntegrationTest {
         assertEquals(expectedString, todoItem.toString());
     }
 
-    @Ignore
+    @Ignore //集成测试应该移至自动化测试项目
     @Test
     @Rollback
     @Transactional

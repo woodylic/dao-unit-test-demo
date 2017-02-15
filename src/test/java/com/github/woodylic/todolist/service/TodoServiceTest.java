@@ -14,8 +14,6 @@ import org.mockito.MockitoAnnotations;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-//@RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration({"classpath:spring-service.xml","classpath:spring-dao.xml"})
 public class TodoServiceTest {
 
     @Mock

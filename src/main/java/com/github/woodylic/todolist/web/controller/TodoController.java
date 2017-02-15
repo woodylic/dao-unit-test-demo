@@ -19,10 +19,10 @@ public class TodoController {
 
     @RequestMapping(path="/add", method=RequestMethod.POST)
     @ResponseBody
-    public BaseResponse add(@RequestBody BaseRequest<TodoItem> request) {
+    public BaseResponse add(@RequestBody BaseRequest<TodoItem> reqBody) {
         BaseResponse resp = new BaseResponse();
         try {
-            TodoItem todoItem = request.getData();
+            TodoItem todoItem = reqBody.getData();
             todoService.insert(todoItem);
 
             resp.setCode(BaseResponse.SUCCESSED_CODE);
@@ -35,10 +35,10 @@ public class TodoController {
 
     @RequestMapping(path="/update", method=RequestMethod.POST)
     @ResponseBody
-    public BaseResponse update(@RequestBody BaseRequest<TodoItem> request) {
+    public BaseResponse update(@RequestBody BaseRequest<TodoItem> reqBody) {
         BaseResponse resp = new BaseResponse();
         try {
-            TodoItem todoItem = request.getData();
+            TodoItem todoItem = reqBody.getData();
             todoService.update(todoItem);
 
             resp.setCode(BaseResponse.SUCCESSED_CODE);

@@ -8,6 +8,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.kubek2k.springockito.annotations.ReplaceWithMock;
 import org.kubek2k.springockito.annotations.SpringockitoContextLoader;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
@@ -24,26 +27,21 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration    //在跑单元测试的时候真实的启一个web服务，然后开始调用Controller的Rest API，待单元测试跑完之后再将web服务停掉
-@ContextConfiguration(
-        loader = SpringockitoContextLoader.class,
-        locations = {"classpath:spring-web-test.xml"})
 public class TodoControllerTest {
 
     private MockMvc mockMvc;
 
-    @ReplaceWithMock
-    @Autowired
+    @Mock
     TodoService todoServiceMock;
 
-    @Autowired
+    @InjectMocks
     TodoController todoController;
 
     @Before
     public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(todoController).build();
-        reset(todoServiceMock); //注意reset，本例中todoServiceMock由Spring初始化一次，需要每个case前reset，避免交叉影响。
     }
 
     @Test

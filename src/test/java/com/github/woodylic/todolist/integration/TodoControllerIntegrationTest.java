@@ -37,7 +37,7 @@ public class TodoControllerIntegrationTest {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
     }
 
-    @Ignore
+    @Ignore //集成测试应该移至自动化测试项目
     @Test
     public void testFindAll() throws Exception {
         mockMvc.perform(get("/todo/list"))

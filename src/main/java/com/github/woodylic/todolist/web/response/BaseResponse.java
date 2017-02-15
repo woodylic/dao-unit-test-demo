@@ -2,9 +2,6 @@ package com.github.woodylic.todolist.web.response;
 
 import java.io.Serializable;
 
-/**
- * Created by choli on 2017/2/13.
- */
 public class BaseResponse<T> implements Serializable {
 
     public static final Integer SUCCESSED_CODE = 1;
