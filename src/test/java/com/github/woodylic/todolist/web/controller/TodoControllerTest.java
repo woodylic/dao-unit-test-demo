@@ -65,8 +65,7 @@ public class TodoControllerTest {
 
         mockMvc.perform(post("/todo/add").contentType(MediaType.APPLICATION_JSON_UTF8).content(postContent))
                 .andExpect(status().isOk())
-                .andExpect(content().string(expectedResponse))
-                .andDo(print());
+                .andExpect(content().string(expectedResponse));
 
         verify(todoServiceMock).insert(any());
     }
@@ -81,8 +80,7 @@ public class TodoControllerTest {
 
         mockMvc.perform(post("/todo/add").contentType(MediaType.APPLICATION_JSON_UTF8).content(postContent))
                 .andExpect(status().isOk())
-                .andExpect(content().string(expectedResponse))
-                .andDo(print());
+                .andExpect(content().string(expectedResponse));
 
         verify(todoServiceMock).insert(any());
     }
@@ -96,8 +94,7 @@ public class TodoControllerTest {
 
         mockMvc.perform(get("/todo/1"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(expectedResponse))
-                .andDo(print());
+                .andExpect(content().string(expectedResponse));
     }
 
     private TodoItem getTodoItemForTest() {
