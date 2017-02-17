@@ -165,12 +165,14 @@
         </exclusion>
       </exclusions>
     </dependency>
+    <!--
     <dependency>
       <groupId>org.kubek2k</groupId>
       <artifactId>springockito-annotations</artifactId>
       <version>1.0.9</version>
       <scope>test</scope>
     </dependency>
+    -->
     <dependency>
       <groupId>org.hamcrest</groupId>
       <artifactId>hamcrest-core</artifactId>
@@ -196,19 +198,34 @@
           <target>1.8</target>
         </configuration>
       </plugin>
-      <!-- 通过mvn jetty:run命令启动web调试，路径为localhost:8080/ -->
+
+      <!--
+        通过mvn jetty:run命令启动web调试，路径为localhost:8080/。
+        使用jetty的主要原因是支持servlet 3.1，tomcat-maven-plugin的内置服务器是v7，不支持。
+      -->
       <plugin>
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-maven-plugin</artifactId>
         <version>9.4.0.RC3</version>
       </plugin>
-      <!-- 通过mvn tomcat7:run命令启动web调试，路径为localhost:8080/todo-list/ -->
+
+      <!-- 通过mvn tomcat7:deploy命令自动部署。 -->
       <plugin>
         <groupId>org.apache.tomcat.maven</groupId>
         <artifactId>tomcat7-maven-plugin</artifactId>
         <version>2.2</version>
         <configuration>
+          <!-- tomcat的管理路径（tomcat需要自行启动） -->
+          <url>http://localhost:8080/manager/text</url>
+          <!-- 在maven的settings.xml需要配置一个server节点，这里的tomcat是server节点id -->
+          <server>local_tomcat</server>
+          <!-- 用户名和密码，应该在maven settings设置。-->
+          <!--
+          <username>manager</username>
+          <password><the admin password></password>
+          -->
           <uriEncoding>UTF-8</uriEncoding>
+          <path>/${build.finalName}</path>
         </configuration>
       </plugin>
     </plugins>
