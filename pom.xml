@@ -3,8 +3,8 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.github.woodylic</groupId>
-  <artifactId>unit-test-demo</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <artifactId>todo-list</artifactId>
+  <version>0.1</version>
   <packaging>war</packaging>
 
   <properties>
@@ -44,7 +44,7 @@
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
-      <version>3.0.1</version>
+      <version>3.1.0</version>
       <scope>provided</scope>
     </dependency>
 
@@ -186,6 +186,7 @@
   </dependencies>
 
   <build>
+    <finalName>todo-list</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -195,6 +196,13 @@
           <target>1.8</target>
         </configuration>
       </plugin>
+      <!-- 通过mvn jetty:run命令启动web调试，路径为localhost:8080/ -->
+      <plugin>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+        <version>9.4.0.RC3</version>
+      </plugin>
+      <!-- 通过mvn tomcat7:run命令启动web调试，路径为localhost:8080/todo-list/ -->
       <plugin>
         <groupId>org.apache.tomcat.maven</groupId>
         <artifactId>tomcat7-maven-plugin</artifactId>
