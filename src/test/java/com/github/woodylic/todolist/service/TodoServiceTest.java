@@ -117,11 +117,12 @@ public class TodoServiceTest {
         todoServiceImpl.selectByPrimaryKey(0L);
     }
 
-    @Ignore
+    //目前todoService.selectAll仅仅是调用了todoDao.service，业务层没有任何逻辑，不需要单测。
+    /*
     @Test
     public void testSelectAll() {
-        //目前todoService.selectAll仅仅是调用了todoDao.service，业务层没有任何逻辑，不需要单测。
-    }
+
+    }*/
 
     private TodoItem getTodoItemForTest() {
         TodoItem todoItem = new TodoItem();
