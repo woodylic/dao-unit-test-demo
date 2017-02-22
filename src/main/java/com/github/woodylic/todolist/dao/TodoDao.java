@@ -10,6 +10,8 @@ public interface TodoDao {
 
     int update(TodoItem todoItem);
 
+    int deleteByPrimaryKey(Long id);
+
     TodoItem selectByPrimaryKey(Long id);
 
     List<TodoItem> selectAll();

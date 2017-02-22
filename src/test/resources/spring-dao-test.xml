@@ -13,20 +13,14 @@
 
 	<import resource="classpath:spring-dao.xml" />
 
-  <!-- 1. 使用h2数据库做单元测试 -->
-	<jdbc:embedded-database id="dataSource" type="H2">
-		<jdbc:script location="classpath:sql-script/set-h2-type.sql"/>
-		<jdbc:script location="classpath:sql-script/scheme.sql"/>
-		<jdbc:script location="classpath:sql-script/test-data.sql"/>
-	</jdbc:embedded-database>
-
-  <!-- 2. 配置事务管理器 -->
-  <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-    <!-- 注入数据库连接池 -->
-    <property name="dataSource" ref="dataSource" />
+  <!-- 使用h2数据库做单元测试 -->
+  <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName" value="org.h2.Driver" />
+    <property name="url" value="jdbc:h2:mem:todo-list;DB_CLOSE_DELAY=-1;MODE=MySQL" />
   </bean>
 
-  <!-- 3. 默认使用注解来管理事务行为 -->
-  <tx:annotation-driven transaction-manager="transactionManager" />
+  <jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS">
+    <jdbc:script location="classpath:db/scheme.sql"/>
+  </jdbc:initialize-database>
 
 </beans>
