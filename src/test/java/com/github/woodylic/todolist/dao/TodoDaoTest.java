@@ -1,6 +1,7 @@
 package com.github.woodylic.todolist.dao;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
+import com.github.springtestdbunit.annotation.DatabaseOperation;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.DatabaseTearDown;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
@@ -62,19 +63,27 @@ public class TodoDaoTest {
 
         int impactRows = todoDao.update(todo);
         assertEquals(1, impactRows);
+
+        todo.setId(3L);
+        impactRows = todoDao.update(todo);
+        assertEquals(0, impactRows);
     }
 
     @Test
     @DatabaseSetup(value="basic-test-data.xml")
+    @ExpectedDatabase(value="expected-result-for-delete.xml")
     public void testDeleteByPrimaryKey(){
         int impactRows = todoDao.deleteByPrimaryKey(Long.valueOf(1L));
         assertEquals(1, impactRows);
+
+        impactRows = todoDao.deleteByPrimaryKey(Long.valueOf(3L));
+        assertEquals(0, impactRows);
     }
 
 	@Test
     @DatabaseSetup(value = {"basic-test-data.xml"})
+    @DatabaseTearDown(value={"basic-test-data.xml"}, type= DatabaseOperation.DELETE)
 	public void testSelectAll() throws InterruptedException {
-
 		List<TodoItem> todoItems = todoDao.selectAll();
         assertEquals(2, todoItems.size());
 	}
