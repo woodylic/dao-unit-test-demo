@@ -199,8 +199,38 @@
 
   </dependencies>
 
+  <profiles>
+    <profile>
+      <id>dev</id>
+      <properties>
+        <active.profile>dev</active.profile>
+      </properties>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+    </profile>
+    <profile>
+      <id>prod</id>
+      <properties>
+        <active.profile>prod</active.profile>
+      </properties>
+    </profile>
+  </profiles>
+
   <build>
     <finalName>todo-list</finalName>
+
+    <filters>
+      <filter>src/main/filters/db.${active.profile}.properties</filter>
+    </filters>
+
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
+
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -268,4 +298,5 @@
       </plugin>
     </plugins>
   </build>
+
 </project>
