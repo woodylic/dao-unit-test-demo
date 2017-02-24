@@ -1,3 +1,4 @@
+/*
 package com.github.woodylic.todolist.dao;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
@@ -99,3 +100,4 @@ public class TodoDaoTest {
         assertNull(expectNotExist);
     }
 }
+*/
