@@ -13,6 +13,14 @@
 
 	<import resource="classpath:spring-dao.xml" />
 
+  <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="locations">
+      <array>
+        <value>classpath:test-env.properties</value>
+      </array>
+    </property>
+  </bean>
+
   <!-- 使用h2数据库做单元测试 -->
   <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     <property name="driverClassName" value="org.h2.Driver" />
@@ -20,7 +28,7 @@
   </bean>
 
   <jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS">
-    <jdbc:script location="classpath:db/scheme.sql"/>
+    <jdbc:script location="file:///${project.basedir}/src/main/db/scheme.sql"/>
   </jdbc:initialize-database>
 
 </beans>

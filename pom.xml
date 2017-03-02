@@ -246,8 +246,13 @@
       </resource>
     </resources>
 
+    <testResources>
+      <testResource>
+        <directory>src/test/resources</directory>
+        <filtering>true</filtering>
+      </testResource>
+    </testResources>
     <plugins>
-
       <!-- 同时编译Java和Kotlin -->
       <plugin>
         <artifactId>kotlin-maven-plugin</artifactId>
@@ -365,6 +370,9 @@
               <propertyName>surefireArgLine</propertyName>
             </configuration>
           </execution>
+          <!--
+            Generate report from jacoco-ut.exec file after unit test complete.
+          -->
           <execution>
             <id>post-unit-test</id>
             <phase>test</phase>
