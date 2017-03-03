@@ -7,6 +7,7 @@ public class BaseResponse<T> implements Serializable {
     public static final Integer SUCCESSED_CODE = 1;
     public static final Integer FAILED_CODE = 0;
 
+    private Integer status;
     private Integer code;
     private String message;
     private T data;
@@ -35,7 +36,7 @@ public class BaseResponse<T> implements Serializable {
         this.data = data;
     }
 
-    public BaseResponse(){
+    public BaseResponse() {
         super();
     }
 }

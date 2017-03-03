@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping(path="/todo")
+@RequestMapping(path = "/todo")
 public class TodoController {
 
     @Autowired
     private TodoService todoService;
 
-    @RequestMapping(path="/add", method=RequestMethod.POST)
+    @RequestMapping(path = "/add", method = RequestMethod.POST)
     @ResponseBody
     public BaseResponse add(@RequestBody BaseRequest<TodoItem> reqBody) {
         BaseResponse resp = new BaseResponse();
@@ -33,7 +33,7 @@ public class TodoController {
         return resp;
     }
 
-    @RequestMapping(path="/update", method=RequestMethod.POST)
+    @RequestMapping(path = "/update", method = RequestMethod.POST)
     @ResponseBody
     public BaseResponse update(@RequestBody BaseRequest<TodoItem> reqBody) {
         BaseResponse resp = new BaseResponse();
@@ -49,7 +49,7 @@ public class TodoController {
         return resp;
     }
 
-    @RequestMapping(path="/{id}", method=RequestMethod.GET)
+    @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public BaseResponse<TodoItem> findById(@PathVariable Long id) {
         BaseResponse resp = new BaseResponse();
@@ -65,7 +65,7 @@ public class TodoController {
         return resp;
     }
 
-    @RequestMapping(path="/list", method=RequestMethod.GET)
+    @RequestMapping(path = "/list", method = RequestMethod.GET)
     @ResponseBody
     public BaseResponse<TodoItem> findAll() {
         BaseResponse resp = new BaseResponse();

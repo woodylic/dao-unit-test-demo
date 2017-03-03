@@ -13,13 +13,4 @@ public class BaseRequest<T> implements Serializable {
     public void setData(T data) {
         this.data = data;
     }
-
-    public BaseRequest(){
-        super();
-    }
-
-    public BaseRequest(T data) {
-        super();
-        this.data = data;
-    }
 }
