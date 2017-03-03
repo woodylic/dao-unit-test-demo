@@ -13,6 +13,8 @@
 
 	<import resource="classpath:spring-dao.xml" />
 
+  <!-- 使用jdbc initialize database需要从environment读取project basedir，flyway不需要。 -->
+  <!--
   <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
     <property name="locations">
       <array>
@@ -20,15 +22,38 @@
       </array>
     </property>
   </bean>
+  -->
 
   <!-- 使用h2数据库做单元测试 -->
   <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     <property name="driverClassName" value="org.h2.Driver" />
-    <property name="url" value="jdbc:h2:mem:todo-list;DB_CLOSE_DELAY=-1;MODE=MySQL" />
+    <property name="url" value="jdbc:h2:mem:todolist-db;DB_CLOSE_DELAY=-1;MODE=MySQL" />
   </bean>
 
+  <!-- 使用jdbc initialize-database初始化数据库，已使用flyway代替。 -->
+  <!--
   <jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS">
     <jdbc:script location="file:///${project.basedir}/src/main/db/scheme.sql"/>
   </jdbc:initialize-database>
+  -->
+
+  <!-- 使用flyway初始化数据库 -->
+  <bean id="flyway" class="org.flywaydb.core.Flyway" init-method="migrate" depends-on="dataSource">
+    <property name="dataSource" ref="dataSource"/>
+    <property name="encoding" value="UTF-8"/>
+    <property name="locations" value="${db.migration.location}"/>
+  </bean>
+
+  <!-- dbunit配置，匹配MySQL -->
+  <bean id="sqlDataTypeFactory" class ="org.dbunit.ext.mysql.MySqlDataTypeFactory" />
+
+  <bean id="dbUnitDatabaseConfig" class="com.github.springtestdbunit.bean.DatabaseConfigBean">
+    <property name = "datatypeFactory" ref = "sqlDataTypeFactory" />
+  </bean>
+
+  <bean id="dbUnitDatabaseConnection" class="com.github.springtestdbunit.bean.DatabaseDataSourceConnectionFactoryBean">
+    <property name="databaseConfig" ref="dbUnitDatabaseConfig"/>
+    <property name="dataSource" ref="dataSource" />
+  </bean>
 
 </beans>
